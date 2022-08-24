@@ -16,12 +16,7 @@ import java.util.*;
 
 @Component
 public class ReadData {
-    //    ReadExcelRepo readExcelRepo;
-//
-//    @Autowired
-//    ReadData(ReadExcelRepo readExcelRepo) {
-//        this.readExcelRepo = readExcelRepo;
-//    }
+
     JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -34,6 +29,11 @@ public class ReadData {
 
     ModelClass modelClass = new ModelClass();
     ArrayList<ModelClass> list = new ArrayList<>();
+
+    public void addRecord(ModelClass modelClass) {
+        String querry = "INSERT INTO excel (id, names, department) VALUES (?,?,?)";
+        jdbcTemplate.update(querry, modelClass.getSrNo(), modelClass.getName(), modelClass.getDepartment());
+    }
 
     public void readingExcelFile() {
         try {
@@ -117,8 +117,4 @@ public class ReadData {
         sc.close();  //closes the scanner
     }
 
-    public void addRecord(ModelClass modelClass) {
-        String querry = "INSERT INTO excel (id, names, department) VALUES (?,?,?)";
-        jdbcTemplate.update(querry, modelClass.getSrNo(), modelClass.getName(), modelClass.getDepartment());
-    }
 }
