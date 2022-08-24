@@ -24,9 +24,8 @@ public class ReadData {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    ReadData() {
-    }
-
+    ReadData() { }
+    
     ModelClass modelClass = new ModelClass();
     ArrayList<ModelClass> list = new ArrayList<>();
 
