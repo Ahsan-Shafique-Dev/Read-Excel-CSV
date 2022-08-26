@@ -115,16 +115,8 @@ public class ReadData {
             String[] nextRecord;
 
             while ((nextRecord = csvReader.readNext()) != null) {
-                String type = nextRecord[0];
-                String sku = nextRecord[1];
-                String name = nextRecord[2];
-                String isPublished = nextRecord[3];
-                String isFeatured = nextRecord[4];
-                String visibility = nextRecord[5];
-
-                csvList.add(new CSV_ModelClass(type, sku, name, isPublished, isFeatured, visibility));
+                addCsvRecordToDb(new CSV_ModelClass(nextRecord[0], nextRecord[1], nextRecord[2], nextRecord[3], nextRecord[4], nextRecord[5]));
             }
-            csvList.forEach((r) -> addCsvRecordToDb(r));
         } catch (Exception e) {
             e.printStackTrace();
         }
